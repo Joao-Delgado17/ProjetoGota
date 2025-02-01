@@ -66,7 +66,7 @@ export default function AddRouteScreen() {
         timestamp: new Date().toISOString(),
       });
 
-      Alert.alert('Sucesso', 'Rota adicionada ao histórico!');
+      Alert.alert('Sucesso', '🚀 Rota adicionada ao histórico!');
       router.push('/historyScreen');
     } catch (error) {
       console.error('Erro ao adicionar ao histórico:', error);
@@ -76,10 +76,14 @@ export default function AddRouteScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Selecionar uma Rota</Text>
+      {/* 🔹 Título chamativo */}
+      <View style={styles.header}>
+        <Text style={styles.title}>Escolha sua Rota</Text>
+        <Text style={styles.subtitle}>Selecione uma rota para adicionar ao histórico</Text>
+      </View>
 
       {routes.length === 0 ? (
-        <Text style={styles.emptyMessage}>Nenhuma rota disponível</Text>
+        <Text style={styles.emptyMessage}>⚠️ Nenhuma rota disponível</Text>
       ) : (
         <FlatList
           data={routes}
@@ -90,9 +94,14 @@ export default function AddRouteScreen() {
               onPress={() => addToHistory(item)}
               activeOpacity={0.7}
             >
-              <Text style={styles.routeText}>{item.name}</Text>
-              <Text style={styles.routeSubtext}>Distância: {item.distance} km</Text>
-              <AntDesign name="right" size={20} color="#007AFF" style={styles.icon} />
+              <View style={styles.routeLeft}>
+                <AntDesign name="enviromento" size={20} color="#007AFF" style={styles.locationIcon} />
+                <Text style={styles.routeText}>{item.name}</Text>
+              </View>
+              <View style={styles.routeRight}>
+                <Text style={styles.routeDistance}>{item.distance} km</Text>
+                <Text style={styles.arrow}>{'>'}</Text>
+              </View>
             </TouchableOpacity>
           )}
         />
@@ -115,14 +124,23 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 20,
     paddingTop: 50,
-    backgroundColor: '#F0F4F8', // 🔹 Fundo moderno 
+    backgroundColor: '#F0F4F8', // 🔹 Fundo moderno
+  },
+  header: {
+    alignItems: 'center',
+    marginBottom: 20,
   },
   title: {
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 20,
+    color: '#007AFF',
     textAlign: 'center',
+  },
+  subtitle: {
+    fontSize: 16,
+    color: '#555',
+    textAlign: 'center',
+    marginTop: 5,
   },
   emptyMessage: {
     fontSize: 16,
@@ -136,40 +154,55 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#fff',
     padding: 15,
-    borderRadius: 10,
+    borderRadius: 12,
     marginBottom: 10,
-    elevation: 3,
+    elevation: 4,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
-    shadowRadius: 4,
+    shadowRadius: 5,
+  },
+  routeLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  locationIcon: {
+    marginRight: 8, // 🔹 Ícone da localização próximo ao nome da rota
   },
   routeText: {
     fontSize: 18,
     fontWeight: 'bold',
     color: '#333',
   },
-  routeSubtext: {
-    fontSize: 14,
-    color: 'gray',
+  routeRight: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
-  icon: {
-    marginLeft: 10,
+  routeDistance: {
+    fontSize: 16,
+    color: '#555',
+    marginRight: 8, // 🔹 Espaço entre os KM e a seta
+  },
+  arrow: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#007AFF', // 🔹 Azul para manter a identidade visual
   },
   fab: {
     position: 'absolute',
     right: 20,
     bottom: 30,
     backgroundColor: '#007AFF',
-    width: 60,
-    height: 60,
-    borderRadius: 30,
+    width: 65,
+    height: 65,
+    borderRadius: 32,
     justifyContent: 'center',
     alignItems: 'center',
-    elevation: 5,
+    elevation: 6,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
-    shadowRadius: 4,
+    shadowRadius: 5,
   },
 });
+

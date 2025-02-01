@@ -106,18 +106,21 @@ export default function RegisterCarScreen() {
         <TextInput 
           style={styles.input} 
           placeholder="Marca" 
+          placeholderTextColor="#555"
           value={brand} 
           onChangeText={setBrand} 
         />
         <TextInput 
           style={styles.input} 
           placeholder="Modelo" 
+          placeholderTextColor="#555"
           value={model} 
           onChangeText={setModel} 
         />
         <TextInput 
           style={styles.input} 
           placeholder="Matrícula" 
+          placeholderTextColor="#555"
           value={licensePlate} 
           onChangeText={setLicensePlate} 
         />

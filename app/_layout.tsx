@@ -37,7 +37,23 @@ export default function RootLayout() {
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
 
         {/* Outras telas */}
-        <Stack.Screen name="registercarScreen" options={{ title: "Registar Carro" }} />
+        <Stack.Screen 
+          name="registerCarScreen" 
+          options={{ 
+            title: "Registar Carro", 
+            headerShown: true,
+            headerBackTitle: "Voltar" // 🔹 Garante que o botão "Voltar" aparece corretamente
+          }} 
+        />
+
+        <Stack.Screen 
+          name="addRouteScreen" 
+          options={{ 
+            title: "Adicionar Rota", 
+            headerShown: true,
+            headerBackTitle: "Voltar" // 🔹 Garante que o botão "Voltar" aparece corretamente
+          }} 
+        />
         <Stack.Screen name="historyScreen" options={{ title: "Histórico" }} />
 
         {/* Tela para Not Found */}
